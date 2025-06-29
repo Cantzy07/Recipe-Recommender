@@ -1,6 +1,81 @@
 .navbar-sections {
+    align-items: end;
     height: 100%;
     display: flex;
-    width: 100%;
+    width: 50%;
     justify-content: space-around;
+    margin: 0 auto;
+}
+
+.navbar-sections button {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+    outline: none;
+    background-color: white;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    border: none;
+}
+
+.navbar-sections button:hover {
+    transform: scale(1.04);
+}
+
+.home-button:hover {
+    background-color: red;
+}
+
+.saved-button:hover {
+    background-color: green;
+}
+
+.search-button:hover {
+    background-color: yellow;
+}
+
+.profile-button:hover {
+    background-color: wheat;
+}
+
+
+button .home {
+    height: 1.5rem;
+    width: 1.5rem;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../icons/icons8-home-48.png');
+}
+
+button .saved {
+    height: 1.5rem;
+    width: 1.5rem;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../icons/icons8-save-48.png');
+}
+
+button .search {
+    height: 1.5rem;
+    width: 1.5rem;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../icons/icons8-search-48.png');
+}
+
+button .profile {
+    height: 1.5rem;
+    width: 1.5rem;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../icons/icons8-profile-48.png');
 }

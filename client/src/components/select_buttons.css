@@ -1,13 +1,81 @@
-.select-wrapper {
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-}
-
 .select_buttons-sections {
+    align-items: end;
+    height: 100%;
     display: flex;
     width: 30%;
-    justify-content: space-between;
-    border-radius: 20px;
+    justify-content: space-around;
+    margin: 0 auto;
+}
+
+.select_buttons-sections button {
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+    outline: none;
+    background-color: white;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.select_buttons-sections button:hover {
+    transform: scale(1.05);
+}
+
+.save-button:hover {
+    background-color: rgb(83, 117, 255);
+}
+
+.no-button:hover {
+    background-color: rgb(255, 104, 104);
+}
+
+.maybe-button:hover {
+    background-color: rgb(255, 255, 119);
+}
+
+.yes-button:hover {
+    background-color: rgb(94, 202, 94);
+}
+
+button .save {
+    height: 1.5rem;
+    width: 1.5rem;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../icons/icons8-save-48.png');
+}
+
+button .no {
+    height: 1.5rem;
+    width: 1.5rem;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../icons/icons8-no-30.png');
+}
+
+button .maybe {
+    height: 1.5rem;
+    width: 1.5rem;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../icons/icons8-dash-30.png');
+}
+
+button .yes {
+    height: 1.5rem;
+    width: 1.5rem;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../icons/icons8-like-50.png');
 }

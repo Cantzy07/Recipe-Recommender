@@ -1,14 +1,12 @@
 import './select_buttons.css';
 
-const SelectButtons = () => (
-    <div className="select-wrapper">
+export default function SelectButtons({ onSwipe }) {
+    return (
         <div className="select_buttons-sections">
-            <button>Save Recipe</button>
-            <button>No</button>
-            <button>Maybe</button>
-            <button>Yes</button>
+            <button className='save-button'><div className="save"></div></button>
+            <button className='no-button' onClick={() => onSwipe("left")}><div className="no"></div></button>
+            <button className='maybe-button' onClick={() => onSwipe("right")}><div className="maybe"></div></button>
+            <button className='yes-button'><div className="yes"></div></button>
         </div>
-    </div>
-);
-
-export default SelectButtons;
+    );
+};
