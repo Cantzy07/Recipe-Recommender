@@ -1,28 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import './card.css';
 
 export default function Cards({ swipeDirection, onSwipeComplete }) {
   const [cards, setCards] = useState(cardData);
+  const [animatingCard, setAnimatingCard] = useState(null);
+
+  const handleCardRemoval = (cardId) => {
+    setCards((pv) => pv.filter((v) => v.id !== cardId));
+    setAnimatingCard(null);
+    if (onSwipeComplete) {
+      onSwipeComplete();
+    }
+  };
+
+  const handleSwipeStart = (cardId) => {
+    setAnimatingCard(cardId);
+  };
 
   return (
 	<div className="custom-grid">
 	  {cards.map((card) => {
 		return (
-		  <Card key={card.id} cards={cards} setCards={setCards} swipeDirection={swipeDirection} onSwipeComplete={onSwipeComplete} {...card} />
+		  <Card key={card.id} cards={cards} setCards={setCards}
+			swipeDirection={swipeDirection} onSwipeComplete={onSwipeComplete} 
+			animatingCard={animatingCard} onCardRemoval={handleCardRemoval}
+            onSwipeStart={handleSwipeStart} {...card} />
 		);
 	  })}
 	</div>
   );
 };
 
-const Card = ({ id, url, setCards, cards, swipeDirection, onSwipeComplete }) => {
+const Card = ({ id, url, setCards, cards, swipeDirection, 
+	onSwipeComplete, animatingCard, onCardRemoval, onSwipeStart }) => {
 	const x = useMotionValue(0);
 
 	const rotateRaw = useTransform(x, [-150, 150], [-18, 18]);
 	const opacity = useTransform(x, [-150, 0, 150], [0, 1, 0]);
 
-	const isFront = id === cards[cards.length - 1].id;
+	const actualFrontCard = cards[cards.length - 1];
+	const isFront = id === actualFrontCard.id && animatingCard !== actualFrontCard.id;
+  	const isAnimating = id === animatingCard;
 
 	const rotate = useTransform(() => {
 		const offset = isFront ? 0 : id % 2 ? 6 : -6;
@@ -32,21 +51,32 @@ const Card = ({ id, url, setCards, cards, swipeDirection, onSwipeComplete }) => 
 
 	const handleDragEnd = () => {
 		if (Math.abs(x.get()) > 100) {
-			setCards((pv) => pv.filter((v) => v.id !== id));
+			onCardRemoval(id);
 		}
 	};
 
 	let animateProps = {
-		scale: isFront ? 1 : 0.98,
+		scale: (isFront || isAnimating) ? 1 : 0.98,
+		x: 0,
+		opacity: 1
 	};
 
-	if (isFront && swipeDirection === "left") {
-		animateProps.x = -150;
-	} else if (isFront && swipeDirection === "right") {
-		animateProps.x = 150;
-	} else {
-		animateProps.opacity = 1;
+	// Only apply swipe animation to the card that should be animating
+	if (isAnimating) {
+		if (swipeDirection === "left") {
+			animateProps.x = -150;
+			animateProps.opacity = 0;
+		} else if (swipeDirection === "right") {
+			animateProps.x = 150;
+			animateProps.opacity = 0;
+		}
 	}
+
+	useEffect(() => {
+		if (isFront && swipeDirection && !animatingCard) {
+		onSwipeStart(id);
+		}
+	}, [swipeDirection, isFront, animatingCard, id, onSwipeStart]);
 
 	return (
 		<motion.img
@@ -63,12 +93,12 @@ const Card = ({ id, url, setCards, cards, swipeDirection, onSwipeComplete }) => 
 		animate={animateProps}
 		transition={{
 			x: { type: "tween", ease: "easeInOut", duration: 1.2 },
+			opacity: { type: "tween", ease: "easeInOut", duration: 1.2 },
 			scale: { duration: 0.1 },
 		}}
-		onAnimationComplete={(definition) => {
-			if (definition === "x" && isFront && swipeDirection) {
-				setCards((pv) => pv.filter((v) => v.id !== id));
-				onSwipeComplete();
+		onAnimationComplete={() => {
+			if (isAnimating && swipeDirection) {
+				onCardRemoval(id);
 			}
 		}}
 		drag="x"
