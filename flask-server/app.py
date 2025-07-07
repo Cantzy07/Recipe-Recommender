@@ -16,7 +16,6 @@ def card_swiped():
     # up then display recipe
     # down add to saved
 
-
     return jsonify({"status": "ok", **data})
 
 if __name__ == "__main__":
