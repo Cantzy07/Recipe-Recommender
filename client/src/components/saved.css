@@ -1,0 +1,280 @@
+/* Main container */
+.search-container {
+  min-height: 100vh;
+  background: white;
+  padding: 20px;
+}
+
+.search-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Search header */
+.search-header {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.search-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.search-subtitle {
+  color: #666;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+/* Search bar */
+.search-bar-container {
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 15px 50px 15px 20px;
+  border: 2px solid #e9ecef;
+  border-radius: 25px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.search-bar:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.search-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  pointer-events: none;
+}
+
+.search-results-count {
+  text-align: center;
+  margin-top: 15px;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Cards container */
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.no-results {
+  background: white;
+  border-radius: 15px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.no-results-title {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.no-results-text {
+  color: #666;
+}
+
+/* Individual card */
+.search-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.search-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Card header */
+.card-header {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.card-header:hover {
+  background-color: #f8f9fa;
+}
+
+.card-id {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #667eea;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.dropdown-icon {
+  transition: transform 0.3s ease;
+}
+
+.dropdown-icon.expanded {
+  transform: rotate(180deg);
+}
+
+/* Card content (dropdown) */
+.card-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.card-content.expanded {
+  max-height: 200px;
+}
+
+.card-content-inner {
+  padding: 0 20px 20px;
+  border-top: 1px solid #eee;
+  margin-top: 0;
+}
+
+.url-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  margin-top: 15px;
+}
+
+.url-value {
+  background: #f8f9fa;
+  padding: 12px 15px;
+  border-radius: 8px;
+  font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+  font-size: 0.9rem;
+  color: #333;
+  word-break: break-all;
+  border-left: 3px solid #667eea;
+}
+
+.url-link {
+  color: #667eea;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.url-link:hover {
+  color: #5a6fd8;
+  text-decoration: underline;
+}
+
+/* Loading state */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .search-container {
+    padding: 15px;
+  }
+
+  .search-header {
+    padding: 20px 15px;
+  }
+
+  .search-title {
+    font-size: 1.5rem;
+  }
+
+  .search-bar {
+    padding: 12px 40px 12px 15px;
+  }
+
+  .card-header {
+    padding: 15px;
+  }
+
+  .card-id {
+    font-size: 1.1rem;
+  }
+
+  .card-content-inner {
+    padding: 0 15px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-container {
+    padding: 10px;
+  }
+
+  .search-header {
+    padding: 15px;
+  }
+
+  .search-title {
+    font-size: 1.3rem;
+  }
+
+  .dropdown-toggle {
+    font-size: 0.8rem;
+  }
+
+  .url-value {
+    font-size: 0.8rem;
+    padding: 10px 12px;
+  }
+}

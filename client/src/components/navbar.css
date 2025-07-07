@@ -1,13 +1,23 @@
+.navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+  margin-bottom: 1rem;
+}
+
 .navbar-sections {
-    align-items: end;
-    height: 100%;
-    display: flex;
-    width: 50%;
-    justify-content: space-around;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  width: 50%;              
+  justify-content: space-between;
 }
 
 .navbar-sections button {
+    flex:         0 0 5rem;
     height: 5rem;
     width: 5rem;
     border-radius: 50%;
@@ -21,6 +31,13 @@
     position: relative;
     overflow: hidden;
     border: none;
+}
+
+@media (max-width: 768px) {
+    .navbar-sections {
+        width: 75%;
+    }
+
 }
 
 .navbar-sections button:hover {

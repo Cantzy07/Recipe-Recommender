@@ -1,0 +1,353 @@
+/* Main container */
+.profile-container {
+  min-height: 100vh;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+}
+
+.profile-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z'/%3E%3C/g%3E%3C/svg%3E")
+    repeat;
+  pointer-events: none;
+}
+
+/* Profile card */
+.profile-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+/* Not signed in state */
+.auth-section {
+  padding: 40px 30px;
+  text-align: center;
+}
+
+.auth-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.auth-subtitle {
+  color: #666;
+  margin-bottom: 30px;
+  font-size: 1rem;
+}
+
+.auth-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.auth-button {
+  padding: 14px 24px;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-button--primary {
+  background: linear-gradient(135deg, #fd5068, #ff6b6b);
+  color: white;
+  box-shadow: 0 4px 15px rgba(253, 80, 104, 0.3);
+}
+
+.auth-button--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(253, 80, 104, 0.4);
+}
+
+.auth-button--secondary {
+  background: transparent;
+  color: #fd5068;
+  border: 2px solid #fd5068;
+}
+
+.auth-button--secondary:hover {
+  background: #fd5068;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Profile display */
+.profile-display {
+  position: relative;
+}
+
+.profile-header {
+  height: 200px;
+  background: linear-gradient(135deg, #fd5068, #ff6b6b);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid white;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: #fd5068;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.profile-info {
+  padding: 30px;
+  text-align: center;
+}
+
+.profile-name {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.profile-email {
+  color: #666;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+.profile-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 25px;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fd5068;
+  display: block;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.profile-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.profile-button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.profile-button--edit {
+  background: #f8f9fa;
+  color: #333;
+}
+
+.profile-button--edit:hover {
+  background: #e9ecef;
+}
+
+.profile-button--logout {
+  background: #fd5068;
+  color: white;
+}
+
+.profile-button--logout:hover {
+  background: #e8455f;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 400px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal-header {
+  padding: 25px 30px 0;
+  text-align: center;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.modal-subtitle {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 25px;
+}
+
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #999;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.close-button:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+/* Form styles */
+.auth-form {
+  padding: 0 30px 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #fd5068;
+  box-shadow: 0 0 0 3px rgba(253, 80, 104, 0.1);
+}
+
+.form-button {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #fd5068, #ff6b6b);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 15px;
+}
+
+.form-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(253, 80, 104, 0.3);
+}
+
+.form-switch {
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.form-switch button {
+  background: none;
+  border: none;
+  color: #fd5068;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+  .profile-container {
+    padding: 10px;
+  }
+
+  .auth-section,
+  .profile-info {
+    padding: 30px 20px;
+  }
+
+  .modal-content {
+    margin: 10px;
+  }
+
+  .auth-form {
+    padding: 0 20px 20px;
+  }
+}

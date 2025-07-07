@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Navbar from './navbar';
 import SelectButtons from './select_buttons';
 import Cards from './card';
 import './homepage.css';
@@ -19,7 +18,6 @@ export default function Homepage() {
       </div>
       <Cards swipeDirection={swipeDirection} onSwipeComplete={handleSwipeComplete}/>
       <SelectButtons onSwipe={setSwipeDirection}/>
-      <Navbar/>
     </div>
   )
 };

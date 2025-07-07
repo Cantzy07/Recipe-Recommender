@@ -1,15 +1,16 @@
 .select_buttons-sections {
-    align-items: end;
+    align-items: start;
     height: 100%;
     display: flex;
     width: 30%;
     justify-content: space-around;
     margin: 0 auto;
+    z-index: 10;
 }
 
 .select_buttons-sections button {
-    height: 4rem;
-    width: 4rem;
+    height: 4.5rem;
+    width: 4.5rem;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -22,6 +23,16 @@
     overflow: hidden;
     border: none;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 768px) {
+    .select_buttons-sections {
+        width: 50%;
+    }
+    .select_buttons-sections button {
+        height: 4rem;
+        width: 4rem;
+    }
 }
 
 .select_buttons-sections button:hover {

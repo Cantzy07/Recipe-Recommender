@@ -22,9 +22,19 @@
     text-align: center;
 }
 
+@media (max-width: 768px) {
+    .header {
+        padding-top: 0;
+        width: 50%;
+    }
+    .title {
+        font-size: 1.5rem;
+    }
+}
+
 .home-wrapper {
     display: grid;
     height: 100%;
     width: 100%;
-    grid-template-rows: 10% 65% 10% 15%;
+    grid-template-rows: 10% 65% 10%;
 }
